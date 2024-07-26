@@ -1,13 +1,34 @@
-*{
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-.navbar{
+.routerLink {
+  color: inherit;
+  text-decoration: inherit;
+  border: 3px solid #7bb02c;
+  border-radius: 10px;
+  display: inline-block;
+  padding: 5px 10px;
+  margin: auto 10px;
+}
+
+.routerLink:hover {
+  color: #000000;
+  border: 3px solid #ffffff;
+}
+
+.routerLink.active {
+  background-color: #ffffff;
+  color: #000000;
+  border: 3px solid #ffffff;
+}
+
+.navbar {
   width: 100%;
-  height: 10vh;
-  background-color: #000000;
+  height: 60px;
+  background-color: #7bb02c;
   color: #ffffff;
   display: flex;
   align-items: center;
@@ -15,7 +36,13 @@
   text-align: center;
 }
 
-.tabs{
+.logo {
+  width: 40px;
+  height: 40px;
+  margin: 10px 30px 10px 15px;
+}
+
+.tabs {
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -23,20 +50,28 @@
   justify-content: left;
 }
 
-.tab-leagues{
-  width: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.tab > h2 {
+  font-size: 15px;
 }
 
-.tab-teams{
-  width: 200px;
+.leagues {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-.content{
-  width: 100%;
+.league {
+  width: 250px;
+  height: 300px;
+  background: lightblue;
+  margin: 20px;
+  padding: 10px;
+}
+
+.activePageNumber {
+  background-color: white;
+}
+.inactivaPageNumber {
+  background-color: #000000;
 }
