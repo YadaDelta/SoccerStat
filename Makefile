@@ -1,6 +1,8 @@
 install:
 		npm i
 
-start:
+proxy:
 		node src/proxy.js
+
+start:
 		npm start
