@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import api from "../logic/api";
-import Pagination from "../components/Pagination";
-import SearchBar from "../components/SearchBar";
+import { Pagination, SearchBar } from "../components";
+import { cardSkeleton } from "../assets/skeletonData";
 
 const Leagues = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(cardSkeleton);
   const [searchInput, setSearchInput] = useState("");
   const [activePage, setActivePage] = useState(1);
+  const [error, setError] = useState(0);
+
+  const errorMessage =
+    "Количество использований бесплатного API превышено. Пожалуйста, подождите минуту.";
 
   const filteredLeagues =
     searchInput !== ""
@@ -23,10 +27,16 @@ const Leagues = () => {
   );
 
   useEffect(() => {
-    api("competitions/").then((res) => {
-      console.log(res.data.competitions);
-      setData(res.data.competitions);
-    });
+    api("competitions/")
+      .then((res) => {
+        console.log(res.data.competitions);
+        setData(res.data.competitions);
+      })
+      .catch((err) => {
+        if (err.response.status === 429) {
+          setError(err.response.status);
+        }
+      });
   }, []);
 
   return (
@@ -35,15 +45,20 @@ const Leagues = () => {
         setSearchInput={setSearchInput}
         setActivePage={setActivePage}
       />
-      <div className="leagues">
-        {pageLeagues.map((data) => (
-          <div key={data.id} className="league">
-            <img src={data.emblem} alt="#" className="leagueImage" />
-            <h1>{data.name}</h1>
-            <Link to={"/leagues/" + data.id}>Link</Link>
-          </div>
-        ))}
-      </div>
+      {error === 429 ? (
+        <div className="errorMessage">{errorMessage}</div>
+      ) : (
+        <div className="leagues">
+          {pageLeagues.map((data) => (
+            <Link key={data.id} to={"/leagues/" + data.id} className="cardLink">
+              <div className="league">
+                <img src={data.emblem} alt="#" className="leagueImage" />
+                <h1>{data.name}</h1>
+              </div>
+            </Link>
+          ))}
+        </div>
+      )}
       <Pagination
         activePage={activePage}
         setActivePage={setActivePage}

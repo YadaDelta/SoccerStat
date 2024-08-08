@@ -11,7 +11,7 @@ const Breadcrumbs = ({ openedElement }) => {
   const localRootElement = nameTable[rootElement];
 
   return (
-    <nav>
+    <nav className="breadCrumbs">
       <div className="rootElement">
         <Link to={`/${rootElement}/`}>{localRootElement}</Link>
       </div>

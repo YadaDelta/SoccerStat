@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import api from "../logic/api";
-import Pagination from "../components/Pagination";
-import Breadcrumbs from "../components/Breadcrumbs";
-import DateFilter from "../components/DateFilter";
+import { Pagination, Breadcrumbs, DateFilter } from "../components";
+import { tableSkeleton } from "../assets/skeletonData";
 
 const League = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(tableSkeleton);
   const [activePage, setActivePage] = useState(1);
   const [leagueName, setLeagueName] = useState("");
   const [dateRange, setDateRange] = useState({
     startDate: null,
     endDate: null,
   });
+  const [error, setError] = useState(0);
+
+  const errorMessage =
+    "Количество использований бесплатного API превышено. Пожалуйста, подождите минуту.";
 
   const { id } = useParams();
 
@@ -37,14 +40,21 @@ const League = () => {
   );
 
   useEffect(() => {
-    api(`competitions/${id}/matches/`).then((res) => {
-      console.log(res.data);
-      setData(res.data.matches);
-      setLeagueName(res.data.competition.name);
-    });
+    api(`competitions/${id}/matches/`)
+      .then((res) => {
+        console.log(res.data);
+        setData(res.data.matches);
+        setLeagueName(res.data.competition.name);
+      })
+      .catch((err) => {
+        if (err.response.status === 429) {
+          setError(err.response.status);
+        }
+      });
   }, [id]);
 
   const nameTable = {
+    LOADING: "Загрузка",
     TIMED: "Объявлен",
     SCHEDULED: "Запланирован",
     LIVE: "В прямом эфире",
@@ -93,23 +103,27 @@ const League = () => {
         setDateRange={setDateRange}
         setActivePage={setActivePage}
       />
-      <table>
-        <tbody>
-          {pageMatches.map((match) => {
-            const parsedData = parseMatchData(match);
-            return (
-              <tr className="leagueLine" key={parsedData.matchId}>
-                <td className="date">{parsedData.matchDate}</td>
-                <td className="time">{parsedData.matchTime}</td>
-                <td className="status">{parsedData.matchStatus}</td>
-                <td className="homeTeam">{parsedData.matchHomeTeam}</td>
-                <td className="awayTeam">{parsedData.matchAwayTeam}</td>
-                <td className="score">{parsedData.matchFullScore}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      {error === 429 ? (
+        <div className="errorMessage">{errorMessage}</div>
+      ) : (
+        <table>
+          <tbody>
+            {pageMatches.map((match) => {
+              const parsedData = parseMatchData(match);
+              return (
+                <tr className="leagueLine" key={parsedData.matchId}>
+                  <td className="date">{parsedData.matchDate}</td>
+                  <td className="time">{parsedData.matchTime}</td>
+                  <td className="status">{parsedData.matchStatus}</td>
+                  <td className="homeTeam">{parsedData.matchHomeTeam}</td>
+                  <td className="awayTeam">{parsedData.matchAwayTeam}</td>
+                  <td className="score">{parsedData.matchFullScore}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      )}
       <Pagination
         activePage={activePage}
         setActivePage={setActivePage}
