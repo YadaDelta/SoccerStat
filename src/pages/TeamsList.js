@@ -1,22 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import api from "../logic/api";
-import { Pagination, SearchBar } from "../components";
-import { cardSkeleton } from "../assets/skeletonData";
+import { Pagination, SearchBar, ErrorModule } from "../components";
+import { useGetTeams } from "../logic/query";
+import { filterMatchesBySearch } from "../logic/pageUtils";
 
 const Teams = () => {
-  const [data, setData] = useState(cardSkeleton);
   const [searchInput, setSearchInput] = useState("");
   const [activePage, setActivePage] = useState(1);
-  const [error, setError] = useState(0);
 
-  const errorMessage =
-    "Количество использований бесплатного API превышено. Пожалуйста, подождите минуту.";
+  const { data, error } = useGetTeams();
 
-  const filteredTeams =
-    searchInput !== ""
-      ? data.filter((data) => data.name.includes(searchInput))
-      : data;
+  const filteredTeams = filterMatchesBySearch(data, searchInput);
 
   const totalItems = filteredTeams.length;
   const itemsPerPage = 10;
@@ -26,45 +20,42 @@ const Teams = () => {
     activePage * itemsPerPage
   );
 
-  useEffect(() => {
-    api("teams/")
-      .then((res) => {
-        console.log(res.data.teams);
-        setData(res.data.teams);
-      })
-      .catch((err) => {
-        if (err.response.status === 429) {
-          setError(err.response.status);
-        }
-      });
-  }, []);
-
   return (
     <>
-      <SearchBar
-        setSearchInput={setSearchInput}
-        setActivePage={setActivePage}
-      />
-      {error === 429 ? (
-        <div className="errorMessage">{errorMessage}</div>
+      {error !== null ? (
+        <ErrorModule error={error} />
       ) : (
-        <div className="leagues">
-          {pageTeams.map((data) => (
-            <Link key={data.id} to={"/teams/" + data.id} className="cardLink">
-              <div className="league">
-                <img src={data.crest} alt="#" className="leagueImage" />
-                <h1>{data.name}</h1>
+        <>
+          <SearchBar
+            setSearchInput={setSearchInput}
+            setActivePage={setActivePage}
+          />
+          <div className="leagues">
+            {pageTeams.map((data) => (
+              <div className="card">
+                <div className="innerCard">
+                  <Link
+                    key={data.id}
+                    to={"/teams/" + data.id}
+                    className="cardLink"
+                  >
+                    <div className="league">
+                      <img src={data.crest} alt="#" className="leagueImage" />
+                      <h1>{data.name}</h1>
+                    </div>
+                  </Link>
+                </div>
               </div>
-            </Link>
-          ))}
-        </div>
+            ))}
+          </div>
+          <Pagination
+            activePage={activePage}
+            setActivePage={setActivePage}
+            totalItems={totalItems}
+            itemsPerPage={itemsPerPage}
+          />
+        </>
       )}
-      <Pagination
-        activePage={activePage}
-        setActivePage={setActivePage}
-        totalItems={totalItems}
-        itemsPerPage={itemsPerPage}
-      />
     </>
   );
 };

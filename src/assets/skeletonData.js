@@ -19,10 +19,10 @@ const tableSkeleton = [
     utcDate: "2024-01-01T00:00:00Z",
     status: "LOADING",
     homeTeam: {
-      name: "Команда 1",
+      name: "Загрузка...",
     },
     awayTeam: {
-      name: "Команда 2",
+      name: "Загрузка...",
     },
     score: {
       fullTime: {
@@ -36,10 +36,10 @@ const tableSkeleton = [
     utcDate: "2024-01-01T00:00:00Z",
     status: "LOADING",
     homeTeam: {
-      name: "Команда 1",
+      name: "Загрузка...",
     },
     awayTeam: {
-      name: "Команда 2",
+      name: "Загрузка...",
     },
     score: {
       fullTime: {
@@ -53,10 +53,10 @@ const tableSkeleton = [
     utcDate: "2024-01-01T00:00:00Z",
     status: "LOADING",
     homeTeam: {
-      name: "Команда 1",
+      name: "Загрузка...",
     },
     awayTeam: {
-      name: "Команда 2",
+      name: "Загрузка...",
     },
     score: {
       fullTime: {
@@ -70,10 +70,10 @@ const tableSkeleton = [
     utcDate: "2024-01-01T00:00:00Z",
     status: "LOADING",
     homeTeam: {
-      name: "Команда 1",
+      name: "Загрузка...",
     },
     awayTeam: {
-      name: "Команда 2",
+      name: "Загрузка...",
     },
     score: {
       fullTime: {
@@ -87,10 +87,10 @@ const tableSkeleton = [
     utcDate: "2024-01-01T00:00:00Z",
     status: "LOADING",
     homeTeam: {
-      name: "Команда 1",
+      name: "Загрузка...",
     },
     awayTeam: {
-      name: "Команда 2",
+      name: "Загрузка...",
     },
     score: {
       fullTime: {
@@ -104,10 +104,10 @@ const tableSkeleton = [
     utcDate: "2024-01-01T00:00:00Z",
     status: "LOADING",
     homeTeam: {
-      name: "Команда 1",
+      name: "Загрузка...",
     },
     awayTeam: {
-      name: "Команда 2",
+      name: "Загрузка...",
     },
     score: {
       fullTime: {
@@ -121,10 +121,10 @@ const tableSkeleton = [
     utcDate: "2024-01-01T00:00:00Z",
     status: "LOADING",
     homeTeam: {
-      name: "Команда 1",
+      name: "Загрузка...",
     },
     awayTeam: {
-      name: "Команда 2",
+      name: "Загрузка...",
     },
     score: {
       fullTime: {
@@ -138,10 +138,10 @@ const tableSkeleton = [
     utcDate: "2024-01-01T00:00:00Z",
     status: "LOADING",
     homeTeam: {
-      name: "Команда 1",
+      name: "Загрузка...",
     },
     awayTeam: {
-      name: "Команда 2",
+      name: "Загрузка...",
     },
     score: {
       fullTime: {
@@ -155,10 +155,10 @@ const tableSkeleton = [
     utcDate: "2024-01-01T00:00:00Z",
     status: "LOADING",
     homeTeam: {
-      name: "Команда 1",
+      name: "Загрузка...",
     },
     awayTeam: {
-      name: "Команда 2",
+      name: "Загрузка...",
     },
     score: {
       fullTime: {
@@ -172,10 +172,180 @@ const tableSkeleton = [
     utcDate: "2024-01-01T00:00:00Z",
     status: "LOADING",
     homeTeam: {
-      name: "Команда 1",
+      name: "Загрузка...",
     },
     awayTeam: {
-      name: "Команда 2",
+      name: "Загрузка...",
+    },
+    score: {
+      fullTime: {
+        home: "--",
+        away: "--",
+      },
+    },
+  },
+  {
+    id: 11,
+    utcDate: "2024-01-01T00:00:00Z",
+    status: "LOADING",
+    homeTeam: {
+      name: "Загрузка...",
+    },
+    awayTeam: {
+      name: "Загрузка...",
+    },
+    score: {
+      fullTime: {
+        home: "--",
+        away: "--",
+      },
+    },
+  },
+  {
+    id: 12,
+    utcDate: "2024-01-01T00:00:00Z",
+    status: "LOADING",
+    homeTeam: {
+      name: "Загрузка...",
+    },
+    awayTeam: {
+      name: "Загрузка...",
+    },
+    score: {
+      fullTime: {
+        home: "--",
+        away: "--",
+      },
+    },
+  },
+  {
+    id: 13,
+    utcDate: "2024-01-01T00:00:00Z",
+    status: "LOADING",
+    homeTeam: {
+      name: "Загрузка...",
+    },
+    awayTeam: {
+      name: "Загрузка...",
+    },
+    score: {
+      fullTime: {
+        home: "--",
+        away: "--",
+      },
+    },
+  },
+  {
+    id: 14,
+    utcDate: "2024-01-01T00:00:00Z",
+    status: "LOADING",
+    homeTeam: {
+      name: "Загрузка...",
+    },
+    awayTeam: {
+      name: "Загрузка...",
+    },
+    score: {
+      fullTime: {
+        home: "--",
+        away: "--",
+      },
+    },
+  },
+  {
+    id: 15,
+    utcDate: "2024-01-01T00:00:00Z",
+    status: "LOADING",
+    homeTeam: {
+      name: "Загрузка...",
+    },
+    awayTeam: {
+      name: "Загрузка...",
+    },
+    score: {
+      fullTime: {
+        home: "--",
+        away: "--",
+      },
+    },
+  },
+  {
+    id: 16,
+    utcDate: "2024-01-01T00:00:00Z",
+    status: "LOADING",
+    homeTeam: {
+      name: "Загрузка...",
+    },
+    awayTeam: {
+      name: "Загрузка...",
+    },
+    score: {
+      fullTime: {
+        home: "--",
+        away: "--",
+      },
+    },
+  },
+  {
+    id: 17,
+    utcDate: "2024-01-01T00:00:00Z",
+    status: "LOADING",
+    homeTeam: {
+      name: "Загрузка...",
+    },
+    awayTeam: {
+      name: "Загрузка...",
+    },
+    score: {
+      fullTime: {
+        home: "--",
+        away: "--",
+      },
+    },
+  },
+  {
+    id: 18,
+    utcDate: "2024-01-01T00:00:00Z",
+    status: "LOADING",
+    homeTeam: {
+      name: "Загрузка...",
+    },
+    awayTeam: {
+      name: "Загрузка...",
+    },
+    score: {
+      fullTime: {
+        home: "--",
+        away: "--",
+      },
+    },
+  },
+  {
+    id: 19,
+    utcDate: "2024-01-01T00:00:00Z",
+    status: "LOADING",
+    homeTeam: {
+      name: "Загрузка...",
+    },
+    awayTeam: {
+      name: "Загрузка...",
+    },
+    score: {
+      fullTime: {
+        home: "--",
+        away: "--",
+      },
+    },
+  },
+  {
+    id: 20,
+    utcDate: "2024-01-01T00:00:00Z",
+    status: "LOADING",
+    homeTeam: {
+      name: "Загрузка...",
+    },
+    awayTeam: {
+      name: "Загрузка...",
     },
     score: {
       fullTime: {
