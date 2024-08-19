@@ -1,15 +1,12 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: "Segoe UI", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family: source-code-pro, monospace;
 }
 
 * {
@@ -73,20 +70,26 @@ code {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  max-width: 1500px;
 }
 
-.league {
+.card {
   width: 250px;
   height: 300px;
   background: lightblue;
   margin: 20px;
-  padding: 10px;
   border: #000000 3px solid;
   border-radius: 5px;
 }
 
 .league > h1 {
   font-size: 25px;
+}
+
+.league {
+  text-align: center;
+  width: 244px;
+  height: 300px;
 }
 
 .cardLink {
@@ -98,6 +101,10 @@ code {
   width: 200px;
   height: auto;
   margin: auto;
+}
+
+.innerCard {
+  width: 244px;
 }
 
 .activePageNumber {
@@ -133,7 +140,9 @@ code {
 table {
   margin: 5px;
   border-collapse: collapse;
+  text-align: center;
 }
+
 table td {
   padding: 1px 5px;
   border: 1px solid #000000;
@@ -141,5 +150,25 @@ table td {
 
 .errorMessage {
   margin: 10px;
+  font-size: 25px;
   font-weight: 900;
+}
+
+.errorBoundaryMessage {
+  margin: auto;
+  margin-top: 100px;
+  text-align: center;
+}
+
+.status {
+  min-width: 127px;
+}
+
+.homeTeam,
+.awayTeam {
+  min-width: 235px;
+}
+
+.score {
+  min-width: 35px;
 }
