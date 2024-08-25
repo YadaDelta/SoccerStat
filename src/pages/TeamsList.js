@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Pagination, SearchBar, ErrorModule } from "../components";
+import { Pagination, SearchBar, ErrorComponent } from "../components";
 import { useGetTeams } from "../logic/query";
-import { filterMatchesBySearch } from "../logic/pageUtils";
+import { filterMatchesBySearch, paginateItems } from "../logic/pageUtils";
 
 const Teams = () => {
   const [searchInput, setSearchInput] = useState("");
@@ -12,18 +12,12 @@ const Teams = () => {
 
   const filteredTeams = filterMatchesBySearch(data, searchInput);
 
-  const totalItems = filteredTeams.length;
-  const itemsPerPage = 10;
-
-  const pageTeams = filteredTeams.slice(
-    activePage * itemsPerPage - itemsPerPage,
-    activePage * itemsPerPage
-  );
+  const pageTeams = paginateItems(filteredTeams, activePage, 10);
 
   return (
     <>
-      {error !== null ? (
-        <ErrorModule error={error} />
+      {error ? (
+        <ErrorComponent error={error} />
       ) : (
         <>
           <SearchBar
@@ -51,8 +45,8 @@ const Teams = () => {
           <Pagination
             activePage={activePage}
             setActivePage={setActivePage}
-            totalItems={totalItems}
-            itemsPerPage={itemsPerPage}
+            totalItems={filteredTeams.length}
+            itemsPerPage={10}
           />
         </>
       )}

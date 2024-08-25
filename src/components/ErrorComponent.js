@@ -1,6 +1,6 @@
 import React from "react";
 
-const ErrorModule = ({ error }) => {
+const ErrorComponent = ({ error }) => {
   const statusTable = {
     400: "Матчи не найдены, проверьте запрос (400)",
     403: "К сожалению бесплатная версия API не позволяет показать данный контент (403)",
@@ -20,4 +20,4 @@ const ErrorModule = ({ error }) => {
   );
 };
 
-export default ErrorModule;
+export default ErrorComponent;
