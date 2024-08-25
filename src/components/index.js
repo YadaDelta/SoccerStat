@@ -3,8 +3,9 @@ import DateFilter from "./DateFilter";
 import Navbar from "./Navbar";
 import Pagination from "./Pagination";
 import SearchBar from "./SearchBar";
-import ErrorModule from "./ErrorModule";
+import ErrorComponent from "./ErrorComponent";
 import ErrorBoundary from "./ErrorBoundary";
+import App from "./App";
 
 export {
   Breadcrumbs,
@@ -12,6 +13,7 @@ export {
   Navbar,
   Pagination,
   SearchBar,
-  ErrorModule,
+  ErrorComponent,
   ErrorBoundary,
+  App,
 };

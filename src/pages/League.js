@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Pagination, Breadcrumbs, DateFilter } from "../components";
-import { ErrorModule } from "../components";
+import { ErrorComponent } from "../components";
 import { useGetLeagueMatches } from "../logic/query";
-import { parseMatchData } from "../logic/pageUtils";
+import { parseMatchData, paginateItems } from "../logic/pageUtils";
 import { filterMatchesByDate, findCompetition } from "../logic/pageUtils";
 
 const League = () => {
@@ -23,18 +23,12 @@ const League = () => {
 
   const filteredMatches = filterMatchesByDate(data, dateRange);
 
-  const totalItems = filteredMatches.length;
-  const itemsPerPage = 20;
-
-  const pageMatches = filteredMatches.slice(
-    activePage * itemsPerPage - itemsPerPage,
-    activePage * itemsPerPage
-  );
+  const pageMatches = paginateItems(filteredMatches, activePage, 20);
 
   return (
     <>
-      {error !== null ? (
-        <ErrorModule error={error} />
+      {error ? (
+        <ErrorComponent error={error} />
       ) : (
         <>
           <Breadcrumbs openedElement={leagueName} />
@@ -64,8 +58,8 @@ const League = () => {
           <Pagination
             activePage={activePage}
             setActivePage={setActivePage}
-            totalItems={totalItems}
-            itemsPerPage={itemsPerPage}
+            totalItems={filteredMatches.length}
+            itemsPerPage={20}
           />
         </>
       )}
