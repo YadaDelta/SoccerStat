@@ -12,6 +12,13 @@ const findTeam = (data) => {
     : data[1].awayTeam.name;
 };
 
+const paginateItems = (data, activePage, itemsPerPage) => {
+  return data.slice(
+    activePage * itemsPerPage - itemsPerPage,
+    activePage * itemsPerPage
+  );
+};
+
 const filterMatchesByDate = (data, dateRange) => {
   if (dateRange.startDate === null || dateRange.endDate === null) {
     return data;
@@ -79,4 +86,5 @@ export {
   filterMatchesByDate,
   filterMatchesBySearch,
   parseMatchData,
+  paginateItems,
 };
